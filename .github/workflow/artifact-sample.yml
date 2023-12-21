@@ -1,0 +1,27 @@
+name: Artifacts Sample
+on: workflow_dispatch
+
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Artifact
+        run: echo "初めてのartifact" > artifact-sample.txt
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: artifact-sample.txt
+
+  download-artifact:
+    runs-on: ubuntu-latest
+    needs: upload-artifact
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+      - name: Read Artifact
+        run: |
+          ls
+          cat artifact-sample.txt
