@@ -6,11 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       my-outputs: ${{ steps.set.outputs.my-outputs }};
+      my-outputs2: ${{ steps.set.outputs.my-outputs2 }};
       some-outputs: ${{ steps.out.outputs.some-outputs }};
     steps:
       - name: Create Outputs
         id: set
-        run: echo "my-outputs=初めてのoutputs" >> $GITHUB_OUTPUT
+        run: |
+          echo "my-outputs=初めてのoutputs" >> $GITHUB_OUTPUT
+          echo "my-outputs2=こんちゃ" >> $GITHUB_OUTPUT
       - name: Create Outputs2
         id: out
         run: echo "some-outputs=初めてのoutputs2" >> $GITHUB_OUTPUT
