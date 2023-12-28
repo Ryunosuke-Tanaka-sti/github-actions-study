@@ -25,4 +25,5 @@ jobs:
       - name: Read Outputs
         run: |
           echo "my-outputs: ${{ needs.set-outputs.outputs.my-outputs }}"
+          echo "my-outputs2: ${{ needs.set-outputs.outputs.my-outputs2 }}"
           echo "some-outputs: ${{ needs.set-outputs.outputs.some-outputs }}"
